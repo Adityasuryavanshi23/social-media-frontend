@@ -4,7 +4,6 @@ import useAuthentication from "../../../hooks/useAuthentication";
 import AuthenTicateLayout from "./AuthenTicateLayout";
 import UnAuthencticatedLayout from "./UnAuthencticatedLayout";
 
-const authenticatedroutes = ["/home"];
 const unauthenticateddroutes = ["/login", "/register"];
 
 const Applayout = () => {
@@ -12,18 +11,15 @@ const Applayout = () => {
   const { isuserloggedin } = useAuthentication();
 
   useEffect(() => {
-    if (localStorage.getItem("authToken")) {
+    if (sessionStorage.getItem("authToken")) {
       if (unauthenticateddroutes.includes(window.location.pathname)) {
         navigate("/home");
       }
     } else {
-      if (authenticatedroutes.includes(window.location.pathname)) {
-        navigate("/login");
-      }
+      navigate("/login");
     }
   }, []);
-
-  return isuserloggedin ? (
+  return isuserloggedin || sessionStorage.getItem("authToken") ? (
     <AuthenTicateLayout>
       <Outlet />
     </AuthenTicateLayout>

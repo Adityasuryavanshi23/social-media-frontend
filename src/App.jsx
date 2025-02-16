@@ -12,6 +12,7 @@ import "./App.css";
 import MyProfile from "./pages/home/MyProfile";
 import { CreatePost } from "./pages/home/CreatePost";
 import PostsUpdates from "./pages/home/PostsUpdates";
+import MyPosts from "./pages/home/MyPosts";
 
 const Router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const Router = createBrowserRouter([
           {
             index: true,
             element: <PostsUpdates />,
+          },
+          {
+            path: "myposts",
+            element: <MyPosts />,
           },
           {
             path: "edit",

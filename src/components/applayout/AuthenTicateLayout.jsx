@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Header from "../header/Header";
+import { useSelector } from "react-redux";
 
 const AuthenTicateLayout = ({ children }) => {
+  const { userdata } = useSelector((state) => state.login);
+
+  const { profilePicture, firstname, email } = userdata;
+
   return (
     <>
       <Header />
@@ -12,10 +17,10 @@ const AuthenTicateLayout = ({ children }) => {
             <div className="sticky top-[100px] border-b border-white p-4 sm:border">
               <img
                 className="mb-3 flex aspect-square h-16 w-16 rounded-full border-2 border-[#ae7aff] object-cover"
-                src="https://i.pinimg.com/474x/08/35/0c/08350cafa4fabb8a6a1be2d9f18f2d88.jpg"
-                alt="avatar"
+                src={profilePicture}
+                alt={firstname}
               />
-              <h2 className="mb-1 font-bold">User name</h2>
+              <h2 className="mb-1 font-bold">{firstname}</h2>
               <p className="text-sm">
                 Night owl | Moon enthusiast | Wanderlust 🌕🌙🌎
               </p>
@@ -31,7 +36,7 @@ const AuthenTicateLayout = ({ children }) => {
               <div className="mb-4 text-sm">
                 <h3 className="mb-1 font-bold">Public link</h3>
                 <button className="block text-[#ae7aff] hover:underline">
-                  username@gmail.com
+                  {email}
                 </button>
                 <button className="block break-all text-[#ae7aff] hover:underline">
                   https://www.youtube.com/
@@ -39,11 +44,11 @@ const AuthenTicateLayout = ({ children }) => {
               </div>
               <p className="mb-4 flex gap-x-4">
                 <span className="inline-block">
-                  <span className="font-bold">13.5k </span>
+                  <span className="font-bold">13.5k</span>
                   <span className="text-sm text-gray-400">Followers</span>
                 </span>
                 <span className="inline-block">
-                  <span className="font-bold">204 </span>
+                  <span className="font-bold">204</span>
                   <span className="text-sm text-gray-400">Following</span>
                 </span>
               </p>

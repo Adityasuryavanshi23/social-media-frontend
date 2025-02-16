@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuthentication from "../../../hooks/useAuthentication";
 
@@ -13,7 +14,7 @@ const SocialLogin = () => {
       const resp = await login(payload);
       handlePostLogin(resp);
     } catch (error) {
-      alert(error.response.data.message);
+      alert(error.response.data.message || "Something went wrong");
     }
   };
   return (

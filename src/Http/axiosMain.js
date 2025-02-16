@@ -7,3 +7,24 @@ const axiosMain = axios.create({
 
 
 export default axiosMain
+
+
+export const makeApiRequest = async (url, method, body) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response = await axiosMain({
+      url,
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+      },
+      data: body,
+    });
+    // resolve(response.data);
+    return response.data;
+  } catch (error) {
+    // reject(error);
+    throw error;
+  }
+};

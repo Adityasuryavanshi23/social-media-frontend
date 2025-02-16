@@ -3,28 +3,35 @@ import axiosMain from "../src/Http/axiosMain";
 
 const useApiRequest = () => {
   const [loading, setLoading] = React.useState(false);
-
   const [error, setError] = React.useState(null);
   const [data, setData] = React.useState(null);
 
   const makeApiRequest = async (url, method, body) => {
+    // eslint-disable-next-line no-async-promise-executor
+    // new Promise(async (resolve, reject) => {
     setLoading(true);
     try {
       const response = await axiosMain({
         url,
         method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+        },
         data: body,
       });
-      const data = await response.json();
-      setData(data);
+      setData(response.data);
       setLoading(false);
-      return data;
+      // resolve(response.data);
+      return response.data;
     } catch (error) {
       setError(error);
       setLoading(false);
-      return error;
+      // reject(error);
+      throw error;
     }
   };
+  // });
   return { loading, error, data, makeApiRequest };
 };
 
