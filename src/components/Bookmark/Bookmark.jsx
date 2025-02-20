@@ -1,10 +1,8 @@
 import React from "react";
-import PostsNavHeader from "../Common/PostsNavHeader";
 
 const Bookmark = () => {
   return (
     <>
-      <PostsNavHeader />
       <div className="relative mb-2 w-full last:mb-0 sm:mb-4">
         <div className="flex border-b border-t border-white p-4 text-white sm:border-l sm:border-r">
           <div className="h-10 w-10 shrink-0 sm:h-12 sm:w-12">
@@ -563,28 +561,24 @@ const Bookmark = () => {
             <button
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0 hover:bg-[#ae7aff] hover:text-black focus:border-[#ae7aff] focus:bg-[#ae7aff] focus:text-black before:bg-gray-400/10
               "
-              style="--data-vote-percentage:0%"
             >
               Artificial Intelligence{" "}
             </button>
             <button
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0 hover:bg-[#ae7aff] hover:text-black focus:border-[#ae7aff] focus:bg-[#ae7aff] focus:text-black before:bg-gray-400/10
               "
-              style="--data-vote-percentage:0%"
             >
               Virtual Reality{" "}
             </button>
             <button
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0 hover:bg-[#ae7aff] hover:text-black focus:border-[#ae7aff] focus:bg-[#ae7aff] focus:text-black before:bg-gray-400/10
               "
-              style="--data-vote-percentage:0%"
             >
               Quantum Computing{" "}
             </button>
             <button
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0 hover:bg-[#ae7aff] hover:text-black focus:border-[#ae7aff] focus:bg-[#ae7aff] focus:text-black before:bg-gray-400/10
               "
-              style="--data-vote-percentage:0%"
             >
               5G Connectivity{" "}
             </button>
@@ -707,7 +701,6 @@ const Bookmark = () => {
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0  before:bg-gray-400/10
               "
               disabled=""
-              style="--data-vote-percentage:30%"
             >
               Meditation <span className="ml-auto shrink-0 text-sm">30%</span>
             </button>
@@ -715,7 +708,6 @@ const Bookmark = () => {
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0  before:bg-[#ae7aff]
               "
               disabled=""
-              style="--data-vote-percentage:33%"
             >
               Yoga <span className="ml-auto shrink-0 text-sm">33%</span>
             </button>
@@ -723,7 +715,6 @@ const Bookmark = () => {
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0  before:bg-gray-400/10
               "
               disabled=""
-              style="--data-vote-percentage:27%"
             >
               Deep Breathing{" "}
               <span className="ml-auto shrink-0 text-sm">27%</span>
@@ -732,7 +723,6 @@ const Bookmark = () => {
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0  before:bg-gray-400/10
               "
               disabled=""
-              style="--data-vote-percentage:20%"
             >
               Tai Chi <span className="ml-auto shrink-0 text-sm">20%</span>
             </button>
@@ -855,7 +845,6 @@ const Bookmark = () => {
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0  before:bg-gray-400/10
               "
               disabled=""
-              style="--data-vote-percentage:20%"
             >
               Acrylic Paint{" "}
               <span className="ml-auto shrink-0 text-sm">20%</span>
@@ -864,7 +853,6 @@ const Bookmark = () => {
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0  before:bg-gray-400/10
               "
               disabled=""
-              style="--data-vote-percentage:19%"
             >
               Watercolor <span className="ml-auto shrink-0 text-sm">19%</span>
             </button>
@@ -872,7 +860,6 @@ const Bookmark = () => {
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0  before:bg-gray-400/10
               "
               disabled=""
-              style="--data-vote-percentage:18%"
             >
               Digital Art <span className="ml-auto shrink-0 text-sm">18%</span>
             </button>
@@ -880,7 +867,6 @@ const Bookmark = () => {
               className="relative z-[1] mb-4 inline-flex w-full items-center gap-x-4 border p-4 before:absolute before:inset-y-0 before:left-0 before:z-[-1] before:w-[var(--data-vote-percentage)] last:mb-0  before:bg-gray-400/10
               "
               disabled=""
-              style="--data-vote-percentage:43%"
             >
               Charcoal Sketching{" "}
               <span className="ml-auto shrink-0 text-sm">43%</span>

@@ -15,7 +15,9 @@ const Header = () => {
   };
   return (
     <header className="fixed top-0 z-10 mx-auto flex w-full max-w-full items-center justify-between border-b-[1px] border-b-slate-300 bg-[#121212] p-4 text-white lg:px-10">
-      <h1 className="text-xl font-extrabold md:text-3xl">Social Media</h1>
+      <h1 className="text-xl font-bold md:text-4xl text-[#a578f1] ">
+        Socail Hub
+      </h1>
       <div className="flex w-max flex-shrink-0 items-center justify-end gap-6">
         <span className="relative">
           <svg
@@ -53,7 +55,12 @@ const Header = () => {
           <span className="absolute right-1 top-0 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-green-500 p-1 text-white"></span>
         </span>
         {isuserloggedin ? (
-          <button onClick={handlelogout} type="button">
+          <button
+            onClick={() => {
+              handlelogout;
+              navigate("/login");
+            }}
+          >
             logout
           </button>
         ) : null}

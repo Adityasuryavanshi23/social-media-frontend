@@ -43,13 +43,13 @@ const AuthenTicateLayout = ({ children }) => {
                 </button>
               </div>
               <p className="mb-4 flex gap-x-4">
-                <span className="inline-block">
-                  <span className="font-bold">13.5k</span>
-                  <span className="text-sm text-gray-400">Followers</span>
+                <span className="inline-block ">
+                  <span className="font-bold">0</span>
+                  <span className="text-sm text-gray-400 ml-2">Followers</span>
                 </span>
                 <span className="inline-block">
-                  <span className="font-bold">204</span>
-                  <span className="text-sm text-gray-400">Following</span>
+                  <span className="font-bold">0</span>
+                  <span className="text-sm text-gray-400 ml-2">Following</span>
                 </span>
               </p>
               <button className="inline-flex w-max items-center bg-[#ae7aff] px-4 py-2 text-center font-bold text-black shadow-[5px_5px_0px_0px_#4f4e4e] transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e]">
@@ -65,19 +65,21 @@ const AuthenTicateLayout = ({ children }) => {
               <h2 className="mb-4 font-bold"># Trending Hashtags</h2>
               <ul className="list-disc pl-4">
                 <li>
-                  <button className="hover:text-[#ae7aff]">#javascript</button>
+                  <button className="hover:text-[#ae7aff]">#Dailynews</button>
                 </li>
                 <li>
-                  <button className="hover:text-[#ae7aff]">#typescript</button>
+                  <button className="hover:text-[#ae7aff]">#AI deepseak</button>
                 </li>
                 <li>
-                  <button className="hover:text-[#ae7aff]">#java</button>
+                  <button className="hover:text-[#ae7aff]">#React</button>
                 </li>
                 <li>
-                  <button className="hover:text-[#ae7aff]">#python</button>
+                  <button className="hover:text-[#ae7aff]">
+                    #Frontend Development
+                  </button>
                 </li>
                 <li>
-                  <button className="hover:text-[#ae7aff]">#golang</button>
+                  <button className="hover:text-[#ae7aff]">#Javascript</button>
                 </li>
               </ul>
             </div>

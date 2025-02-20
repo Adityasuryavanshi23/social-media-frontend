@@ -20,10 +20,12 @@ const SocialLogin = () => {
   return (
     <div className="min-h-screen bg-[#121212]">
       <header className="fixed top-0 z-10 mx-auto flex w-full max-w-full items-center justify-between border-b-[1px] border-b-slate-300 bg-[#121212] p-4 text-white lg:px-10">
-        <h1 className="text-xl font-extrabold md:text-3xl">Login</h1>
+        <h1 className="text-xl font-extrabold md:text-3xl capitalize text-[#ae7aff] typing-animation ">
+          welcome to socialhub
+        </h1>
         <div className="flex w-max flex-shrink-0 items-center justify-end gap-6">
           <button
-            className="hidden w-max items-center justify-center border-[1px] border-white p-3 text-center font-bold text-white md:inline-flex"
+            className="hidden w-max items-center justify-center border-[1px] border-[#ae7aff] p-3 text-center font-bold text-[#cfbfea] md:inline-flex"
             onClick={() => nav("/register")}
           >
             Register
@@ -33,7 +35,9 @@ const SocialLogin = () => {
       <div className="mx-auto flex w-full items-stretch justify-between gap-10">
         <div className="mx-auto mt-28 flex w-full flex-col items-start justify-start p-6 sm:max-w-4xl lg:px-10">
           <div className="w-full text-center">
-            <h1 className="mb-3 text-5xl font-extrabold text-white">Login</h1>
+            <h1 className="mb-3 text-5xl font-extrabold text-[#ae7aff] ">
+              Login
+            </h1>
             <p className="text-xs text-slate-400">
               Login to access your account
             </p>
@@ -43,8 +47,9 @@ const SocialLogin = () => {
             className="my-14 flex w-full flex-col items-start justify-start gap-4"
           >
             <div className="flex w-full flex-col items-start justify-start gap-2">
-              <label className="text-xs text-slate-200">Email</label>
+              <label className="text-lg mb-2  text-[#dbcfef]">Email</label>
               <input
+                required
                 placeholder="Enter a username or email..."
                 autoComplete="false"
                 name="email"
@@ -52,8 +57,9 @@ const SocialLogin = () => {
               />
             </div>
             <div className="flex w-full flex-col items-start justify-start gap-2">
-              <label className="text-xs text-slate-200">Password</label>
+              <label className="text-lg mb-2  text-[#dbcfef]">Password</label>
               <input
+                required
                 placeholder="Enter a password..."
                 autoComplete="false"
                 name="password"
@@ -97,7 +103,7 @@ const SocialLogin = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#ae7aff] p-3 text-center font-bold text-black shadow-[5px_5px_0px_0px_#4f4e4e] transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e]"
+              className="w-full text-2xl bg-[#ae7aff] p-3 text-center font-bold text-black shadow-[5px_5px_0px_0px_#4f4e4e] transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e]"
             >
               Log in
             </button>

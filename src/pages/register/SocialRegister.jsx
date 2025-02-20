@@ -27,11 +27,13 @@ const SocialRegister = () => {
   };
   return (
     <div className="min-h-screen bg-[#121212]">
-      <header className="fixed top-0 z-10 mx-auto flex w-full max-w-full items-center justify-between border-b-[1px] border-b-slate-300 bg-[#121212] p-4 text-white lg:px-10">
-        <h1 className="text-xl font-extrabold md:text-3xl">Register</h1>
+      <header className="fixed top-0 z-10 mx-auto flex w-full max-w-full items-center justify-between border-b-[1px] border-b-slate-600 bg-[#121212] p-4 text-white lg:px-10">
+        <h1 className="text-xl font-extrabold md:text-4xl text-[#ae7aff]">
+          Register
+        </h1>
         <div className="flex w-max flex-shrink-0 items-center justify-end gap-6">
           <button
-            className="hidden w-max items-center justify-center border-[1px] border-white p-3 text-center font-bold text-white md:inline-flex"
+            className="hidden w-max items-center justify-center border-[1px] border-[#ae7aff] p-3 text-center font-bold text-[#cfbfea] md:inline-flex"
             onClick={() => nav("/login")}
           >
             Login
@@ -41,10 +43,10 @@ const SocialRegister = () => {
       <div className="mx-auto flex w-full items-stretch justify-between gap-10">
         <div className="mx-auto mt-28 flex w-full flex-col items-start justify-start p-6 sm:max-w-4xl lg:px-10">
           <div className="w-full text-center">
-            <h1 className="mb-3 text-5xl font-extrabold text-white">
-              Register
+            <h1 className="mb-3 text-5xl font-extrabold  text-[#ae7aff]">
+              Register to socialhub
             </h1>
-            <p className="text-xs text-slate-400">
+            <p className="text-md text-[#d1c0ecda]">
               Before we post, please create your account
             </p>
           </div>
@@ -112,7 +114,9 @@ const SocialRegister = () => {
             </div>
             <div className="mt-10 flex w-full flex-col items-center justify-between gap-4 md:flex-row">
               <div className="flex w-full flex-col items-start justify-start gap-2">
-                <label className="text-xs text-slate-200">First name</label>
+                <label className="text-lg mb-2  text-[#dbcfef]">
+                  First name
+                </label>
                 <input
                   name="firstname"
                   placeholder="Enter a first name..."
@@ -121,7 +125,9 @@ const SocialRegister = () => {
                 />
               </div>
               <div className="flex w-full flex-col items-start justify-start gap-2">
-                <label className="text-xs text-slate-200">Last name</label>
+                <label className="text-lg mb-2  text-[#dbcfef]">
+                  Last name
+                </label>
                 <input
                   placeholder="Enter a last name..."
                   name="lastname"
@@ -132,7 +138,7 @@ const SocialRegister = () => {
             </div>
 
             <div className="flex w-full flex-col items-start justify-start gap-2">
-              <label className="text-xs text-slate-200">Email</label>
+              <label className="text-lg mb-2  text-[#dbcfef]">Email</label>
               <input
                 placeholder="Enter an email..."
                 autoComplete="false"
@@ -141,7 +147,7 @@ const SocialRegister = () => {
               />
             </div>
             <div className="flex w-full flex-col items-start justify-start gap-2">
-              <label className="text-xs text-slate-200">Password</label>
+              <label className="text-lg mb-2  text-[#dbcfef]">Password</label>
               <input
                 placeholder="Enter a password..."
                 autoComplete="false"
@@ -156,9 +162,9 @@ const SocialRegister = () => {
                 id="checkbox-2"
                 className="absolute h-6 w-6 cursor-pointer opacity-0 [&:checked+div]:bg-green-500 [&:checked+div_svg]:block"
               />
-              <div className="mr-2 flex h-6 w-6 flex-shrink-0 items-center justify-center border-[1px] border-white bg-transparent focus-within:border-white">
+              <div className="mr-2  mt-2 flex h-6 w-6 flex-shrink-0 items-center justify-center border-[1px] border-white bg-transparent focus-within:border-white">
                 <svg
-                  className="pointer-events-none hidden h-3 w-3 fill-current text-white"
+                  className="pointer-events-nonehidden h-3 w-3 fill-current text-white"
                   version="1.1"
                   viewBox="0 0 17 12"
                   xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +180,7 @@ const SocialRegister = () => {
                   </g>
                 </svg>
               </div>
-              <div className="ml-3 text-sm leading-6">
+              <div className=" mt-2 text-sm leading-6">
                 <label
                   htmlFor="checkbox-2"
                   className="text-sm font-medium text-white"

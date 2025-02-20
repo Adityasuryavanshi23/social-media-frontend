@@ -1,28 +1,43 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const PostsNavHeader = () => {
+  const active = "inline-block bg-[#2c2c2c]  hover:bg-[#2c2c2c] px-6 py-1.5";
+  const inactive = "inline-block px-6 py-1.5 hover:bg-[#2c2c2c]";
   return (
     <div className="sticky top-[82px] z-10 mt-[1px] bg-[#121212] pb-4 before:absolute before:inset-x-0 before:bottom-full before:h-[17px] before:bg-[#121212] md:top-[100px] md:mt-0">
       <ul className="no-scrollbar flex w-full overflow-x-auto px-4 sm:px-0">
         <li className="mr-2 inline-block shrink-0">
-          <button className="inline-block px-6 py-1.5 hover:bg-[#2c2c2c]">
+          <NavLink
+            to="myposts"
+            className={({ isActive }) => (isActive ? active : inactive)}
+          >
             Posts
-          </button>
+          </NavLink>
         </li>
         <li className="mr-2 inline-block shrink-0">
-          <button className="inline-block px-6 py-1.5 hover:bg-[#2c2c2c]">
+          <NavLink
+            to="edit"
+            className={({ isActive }) => (isActive ? active : inactive)}
+          >
             Edit profile
-          </button>
+          </NavLink>
         </li>
         <li className="mr-2 inline-block shrink-0">
-          <button className="inline-block px-6 py-1.5 hover:bg-[#2c2c2c]">
+          <NavLink
+            to="changepassword"
+            className={({ isActive }) => (isActive ? active : inactive)}
+          >
             Change password
-          </button>
+          </NavLink>
         </li>
         <li className="mr-2 inline-block shrink-0">
-          <button className="inline-block bg-[#2c2c2c] px-6 py-1.5">
+          <NavLink
+            to="bookmark"
+            className={({ isActive }) => (isActive ? active : inactive)}
+          >
             Bookmarked
-          </button>
+          </NavLink>
         </li>
       </ul>
     </div>

@@ -51,8 +51,8 @@ const Post = ({ userimage, username, postimage, caption, likes, comments }) => {
           <div className="flex gap-x-4">
             <button
               className="group inline-flex items-center gap-x-1 outline-none after:content-[attr(data-like-count)] focus:after:content-[attr(data-like-count-alt)] hover:text-[#ae7aff] focus:text-[#ae7aff]"
-              data-like-count="102"
-              data-like-count-alt="103"
+              data-like-count="0"
+              data-like-count-alt="1"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@ const Post = ({ userimage, username, postimage, caption, likes, comments }) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <span>18</span>
+              <span>0</span>
             </button>
             <div className="ml-auto">
               <button className="mr-2 inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff]">
