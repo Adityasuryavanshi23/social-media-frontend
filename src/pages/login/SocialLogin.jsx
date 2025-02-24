@@ -5,6 +5,7 @@ import useAuthentication from "../../../hooks/useAuthentication";
 const SocialLogin = () => {
   const nav = useNavigate();
   const { login, handlePostLogin } = useAuthentication();
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

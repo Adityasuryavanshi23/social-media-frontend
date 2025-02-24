@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import useAuthentication from "../../../hooks/useAuthentication";
-import { logoutUser } from "../../store/slices/loginReducer";
-import { useNavigate } from "react-router-dom";
+import useAuthentication from "./hooks/useAuthentication";
+import { logoutUser } from "./src/store/slices/loginReducer";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { isuserloggedin } = useAuthentication();
@@ -10,9 +10,11 @@ const Header = () => {
   const dispatch = useDispatch();
   const handlelogout = () => {
     dispatch(logoutUser());
-    localStorage.clear();
+    sessionStorage.clear();
     navigate("/login");
+    window.location.reload();
   };
+
   return (
     <header className="fixed top-0 z-10 mx-auto flex w-full max-w-full items-center justify-between border-b-[1px] border-b-slate-300 bg-[#121212] p-4 text-white lg:px-10">
       <h1 className="text-xl font-bold md:text-4xl text-[#a578f1] ">
@@ -55,14 +57,9 @@ const Header = () => {
           <span className="absolute right-1 top-0 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-green-500 p-1 text-white"></span>
         </span>
         {isuserloggedin ? (
-          <button
-            onClick={() => {
-              handlelogout;
-              navigate("/login");
-            }}
-          >
+          <Link to="/login" onClick={handlelogout}>
             logout
-          </button>
+          </Link>
         ) : null}
 
         <button

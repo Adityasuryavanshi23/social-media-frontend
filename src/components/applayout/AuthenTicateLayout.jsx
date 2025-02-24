@@ -1,12 +1,16 @@
 import PropTypes from "prop-types";
 import React from "react";
-import Header from "../header/Header";
+import Header from "../../../Header";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const AuthenTicateLayout = ({ children }) => {
   const { userdata } = useSelector((state) => state.login);
 
   const { profilePicture, firstname, email } = userdata;
+  if (!userdata || !profilePicture) {
+    return <Link to="/login" replace />;
+  }
 
   return (
     <>

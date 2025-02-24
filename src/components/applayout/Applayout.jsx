@@ -18,7 +18,7 @@ const Applayout = () => {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [isuserloggedin]);
   return isuserloggedin || sessionStorage.getItem("authToken") ? (
     <AuthenTicateLayout>
       <Outlet />
