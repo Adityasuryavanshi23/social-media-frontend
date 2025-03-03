@@ -10,7 +10,8 @@ const useAuthentication = () => {
   const nav = useNavigate();
   const login = async (payload) =>
     new Promise((resolve, reject) => {
-      axiosMain.post("/auth/login", payload)
+      axiosMain
+        .post("/auth/login", payload)
         .then((resp) => {
           resolve(resp.data);
         })
