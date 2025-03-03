@@ -9,7 +9,6 @@ const unauthenticateddroutes = ["/login", "/register"];
 const Applayout = () => {
   const navigate = useNavigate();
   const { isuserloggedin } = useAuthentication();
-
   useEffect(() => {
     if (sessionStorage.getItem("authToken")) {
       if (unauthenticateddroutes.includes(window.location.pathname)) {
@@ -19,6 +18,7 @@ const Applayout = () => {
       navigate("/login");
     }
   }, [isuserloggedin]);
+
   return isuserloggedin || sessionStorage.getItem("authToken") ? (
     <AuthenTicateLayout>
       <Outlet />

@@ -10,10 +10,13 @@ const SocialRegister = () => {
   const nav = useNavigate();
   const handleRegister = async (e) => {
     e.preventDefault();
-
+    debugger;
     const formData = new FormData(e.target);
     const payload = Object.fromEntries(formData);
-    if (payload?.profilePicture) {
+    if (payload?.profilePicture?.size===0) {
+      payload.profilePicture = "";
+    }
+    if (payload?.profilePicture?.size) {
       const { profilePicture } = payload;
       const cloudinaryResponse = await handleFileUpload(profilePicture);
       payload.profilePicture = cloudinaryResponse.secure_url;

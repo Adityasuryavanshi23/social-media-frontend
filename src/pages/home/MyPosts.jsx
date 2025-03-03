@@ -15,7 +15,7 @@ const MyPosts = () => {
 
   return (
     <>
-      {userposts.length === 0 ? (
+      {userposts?.length === 0 ? (
         <h1 className="capitalize text-center my-10  ">
           its seems like you does not have posts , create some post{" "}
           <span className="text-violet-400 border p-2  border-violet-600 rounded-md">

@@ -3,12 +3,13 @@ import React from "react";
 import Header from "../../../Header";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Dummyuser from "../../assets/dummyuser.png";
 
 const AuthenTicateLayout = ({ children }) => {
   const { userdata } = useSelector((state) => state.login);
+  const { profilePicture, firstname, email, about } = userdata;
 
-  const { profilePicture, firstname, email } = userdata;
-  if (!userdata || !profilePicture) {
+  if (!userdata) {
     return <Link to="/login" replace />;
   }
 
@@ -21,21 +22,17 @@ const AuthenTicateLayout = ({ children }) => {
             <div className="sticky top-[100px] border-b border-white p-4 sm:border">
               <img
                 className="mb-3 flex aspect-square h-16 w-16 rounded-full border-2 border-[#ae7aff] object-cover"
-                src={profilePicture}
+                src={profilePicture || Dummyuser}
                 alt={firstname}
               />
-              <h2 className="mb-1 font-bold">{firstname}</h2>
+              <h2 className="mb-1 font-bold">{firstname || "Username"} </h2>
               <p className="text-sm">
                 Night owl | Moon enthusiast | Wanderlust 🌕🌙🌎
               </p>
               <hr className="my-4 h-[1px] w-full" />
               <div className="mb-4">
                 <h3 className="mb-1 font-bold">Short Bio</h3>
-                <p className="text-sm">
-                  Immersed in the enchanting world of the night, captivated by
-                  the moon&#x27;s allure, and constantly seeking new adventures
-                  around the globe. 🌕🌙🌎
-                </p>
+                <p className="text-sm">{about} 🌕🌙🌎</p>
               </div>
               <div className="mb-4 text-sm">
                 <h3 className="mb-1 font-bold">Public link</h3>
