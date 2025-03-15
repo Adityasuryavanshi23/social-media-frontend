@@ -13,6 +13,7 @@ import MyProfile from "./pages/home/MyProfile";
 import { CreatePost } from "./pages/home/CreatePost";
 import PostsUpdates from "./pages/home/PostsUpdates";
 import MyPosts from "./pages/home/MyPosts";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 const Router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const Router = createBrowserRouter([
             element: <CreatePost />,
           },
         ],
+      },
+      {
+        path: "/userprofile/:id",
+        element: <UserProfile />,
       },
       {
         path: "*", // Catch-all route for any unmatched paths

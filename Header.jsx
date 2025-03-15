@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import useAuthentication from "./hooks/useAuthentication";
 import { logoutUser } from "./src/store/slices/loginReducer";
 import { Link, useNavigate } from "react-router-dom";
+import SearchUserModal from "./src/components/Common/SearchUserModal";
 
 const Header = () => {
   const { isuserloggedin } = useAuthentication();
   const navigate = useNavigate();
+  const [searchModal, setsearchModal] = useState(false);
   const dispatch = useDispatch();
   const handlelogout = () => {
     dispatch(logoutUser());
@@ -20,6 +22,9 @@ const Header = () => {
       <h1 className="text-xl font-bold md:text-4xl text-[#a578f1] ">
         Socail Hub
       </h1>
+      <p onClick={() => setsearchModal(true)} className="cursor-pointer">
+        Search users
+      </p>
       <div className="flex w-max flex-shrink-0 items-center justify-end gap-6">
         {/* <span className="relative">
           <svg
@@ -82,6 +87,7 @@ const Header = () => {
           Create new
         </button>
       </div>
+      {searchModal && <SearchUserModal onClose={() => setsearchModal(false)} />}
     </header>
   );
 };

@@ -16,7 +16,18 @@ const useAuthentication = () => {
           resolve(resp.data);
         })
         .catch((error) => {
-          reject(error);
+          reject({ type: "loginerror", error });
+        });
+    });
+  const oauthlogin = async (payload) =>
+    new Promise((resolve, reject) => {
+      axiosMain
+        .post("/auth/oauth/google", payload)
+        .then((resp) => {
+          resolve(resp.data);
+        })
+        .catch((error) => {
+          reject({ type: "loginerror", error });
         });
     });
   const register = async (payload) => {
@@ -40,6 +51,7 @@ const useAuthentication = () => {
     userdata,
     register,
     handlePostLogin,
+    oauthlogin,
   };
 };
 

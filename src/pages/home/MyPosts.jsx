@@ -17,7 +17,7 @@ const MyPosts = () => {
     <>
       {userposts?.length === 0 ? (
         <h1 className="capitalize text-center my-10  ">
-          its seems like you does not have posts , create some post{" "}
+          its seems like you does not have posts , create some post{" "} <br /><br />
           <span className="text-violet-400 border p-2  border-violet-600 rounded-md">
             <Link to={"/home/create"}>create here</Link>
           </span>
