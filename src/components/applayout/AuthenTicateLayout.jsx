@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
-import Header from "../../../Header";
+import Header from "../header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import LeftSidebar from "./LeftSidebar";

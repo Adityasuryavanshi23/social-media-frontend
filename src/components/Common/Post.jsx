@@ -1,13 +1,55 @@
+import moment from "moment";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { likeDislikePostSuccess } from "../../store/slices/feedsReducer";
+import { likeDislikePostAction } from "../../store/action";
+import { PostCommments } from "../../pages/home/PostComments";
 
-// eslint-disable-next-line no-unused-vars
-const Post = ({ userimage, username, postimage, caption, likes, comments }) => {
+const Post = ({
+  userimage,
+  username,
+  postimage,
+  caption,
+  likes,
+  postId,
+  comments,
+  postuserId,
+  createdAt,
+}) => {
+  const [showcomments, setShowcomments] = React.useState(false);
+  const { userdata } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+
+  const userId = userdata?._id;
+  // Check if current user has liked the post
+  const isLiked = useMemo(() => {
+    return userId === postuserId ? false : likes.includes(userId);
+  }, [likes, userId]);
+  const handleLikeDislike = () => {
+    // Optimistically update UI
+    dispatch(
+      likeDislikePostSuccess({
+        postId,
+        userId,
+        isLiked,
+      })
+    );
+
+    // Make API request
+    dispatch(
+      likeDislikePostAction({
+        userId,
+        postId,
+      })
+    );
+  };
   return (
     <div className="relative mb-2 w-full last:mb-0 sm:mb-4">
       <div className="flex border-b border-t border-white p-4 text-white sm:border-l sm:border-r">
         <div className="h-10 w-10 shrink-0 sm:h-12 sm:w-12">
           <img
+            referrerPolicy="no-referrer"
             src={
               userimage ||
               "https://i.pinimg.com/474x/08/35/0c/08350cafa4fabb8a6a1be2d9f18f2d88.jpg"
@@ -21,7 +63,7 @@ const Post = ({ userimage, username, postimage, caption, likes, comments }) => {
             <div className="w-full">
               <h2 className="inline-block font-bold">{username}</h2>
               <span className="ml-2 inline-block text-sm text-gray-400">
-                1 hour ago
+                {moment(createdAt).fromNow()}
               </span>
             </div>
             <button className="ml-auto shrink-0 hover:text-[#ae7aff]">
@@ -50,13 +92,12 @@ const Post = ({ userimage, username, postimage, caption, likes, comments }) => {
           )}
           <div className="flex gap-x-4">
             <button
-              className="group inline-flex items-center gap-x-1 outline-none after:content-[attr(data-like-count)] focus:after:content-[attr(data-like-count-alt)] hover:text-[#ae7aff] focus:text-[#ae7aff]"
-              data-like-count="0"
-              data-like-count-alt="1"
+              onClick={handleLikeDislike}
+              className="group inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff] focus:text-[#ae7aff]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
+                fill={isLiked ? "#ae7aff" : "none"}
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
@@ -69,8 +110,12 @@ const Post = ({ userimage, username, postimage, caption, likes, comments }) => {
                   d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                 ></path>
               </svg>
+              <span>{likes?.length}</span>
             </button>
-            <button className="inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff]">
+            <button
+              onClick={() => setShowcomments(!showcomments)}
+              className="inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff]"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -84,7 +129,7 @@ const Post = ({ userimage, username, postimage, caption, likes, comments }) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <span>0</span>
+              <span>{comments?.length || 0}</span>
             </button>
             <div className="ml-auto">
               <button className="mr-2 inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff]">
@@ -123,6 +168,13 @@ const Post = ({ userimage, username, postimage, caption, likes, comments }) => {
           </div>
         </div>
       </div>
+      {showcomments && (
+        <PostCommments
+          postid={postId}
+          userdata={userdata}
+          comments={comments}
+        />
+      )}
     </div>
   );
 };
@@ -134,6 +186,9 @@ Post.propTypes = {
   caption: PropTypes.string,
   likes: PropTypes.number,
   comments: PropTypes.number,
+  createdAt: PropTypes.string,
+  postId: PropTypes.string,
+  postuserId: PropTypes.string,
 };
 
 export default Post;
