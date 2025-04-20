@@ -2,8 +2,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { getPostsByUserIdSuccess, getPostsByUserIdFailure } from '../slices/userProfileReducer.js';
 import { makeApiRequest } from '../../Http/axiosMain';
-import { GETMY_USER_Detail, GETUSER_Detail, GETUSER_POSTS } from '../action/index.js';
-import { setOtherUserdata,setOtherUserdataFail,setOtherUserdataloading, setUserdata } from '../slices/loginReducer.js';
+import { GETMY_USER_Detail, GETUSER_Detail, GETUSER_POSTS ,GET_OTHER_USER_POST} from '../action/index.js';
+import { setOtherUserdata,setOtherUserdataFail,setOtherUserdataloading, setotheruserPosts, setUserdata } from '../slices/loginReducer.js';
 
 function* getPostsByUserId(action) {
   try {
@@ -32,10 +32,20 @@ function* getMyUserprofileSaga(action) {
     console.log(error);
   }
 }
+function* fetchOtehruserPostsaga(action) {
+  try {
+    const response = yield call(makeApiRequest, `/post/user/${action.payload}` , "get");
+    yield put(setotheruserPosts(response));
+  } catch (error) {
+    yield put(getPostsByUserIdFailure(error.message));
+  }
+}
 
 export function* userProfileSaga() {
   yield takeLatest(GETUSER_POSTS , getPostsByUserId);
   yield takeLatest(GETUSER_Detail , getUserdetailSaga);
   yield takeLatest(GETMY_USER_Detail , getMyUserprofileSaga);
+  yield takeLatest(GET_OTHER_USER_POST , fetchOtehruserPostsaga);
+
 
 }

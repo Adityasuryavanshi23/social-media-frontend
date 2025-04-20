@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -18,11 +19,7 @@ const ProfileDropDown = ({ logout }) => {
             edit profile
           </Link>
         </li>
-        <li className="py-2  px-2 hover:bg-gray-700 cursor-pointer">
-          <Link to={"home/changepassword"} className="w-full h-full block">
-            change password
-          </Link>
-        </li>
+
         <li
           onClick={logout}
           className="py-2  px-2 hover:bg-gray-700 cursor-pointer"

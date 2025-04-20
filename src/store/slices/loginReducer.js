@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userdata: null,
   otheruserdata: {
+    otheruserPosts: null,
     data: null,
     loading: false,
     error: null,
@@ -30,7 +31,10 @@ const loginSlice = createSlice({
     logoutUser(state) {
       state.userdata = null;
       state.isuserloggedin = false;
-    }
+    },
+    setotheruserPosts(state , action) {
+      state.otheruserdata.otheruserPosts = action.payload;
+    },
   },
 });
 
@@ -39,7 +43,8 @@ export const {
   setOtherUserdataloading,
   setUserdata,
   setOtherUserdataFail,
-  logoutUser
+  logoutUser,
+  setotheruserPosts
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

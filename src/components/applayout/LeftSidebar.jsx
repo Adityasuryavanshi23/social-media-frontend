@@ -33,12 +33,16 @@ const LeftSidebar = ({ userdata }) => {
   };
   return (
     <aside className="col-span-12 text-white md:col-span-5 lg:col-span-4 xl:col-span-3">
-      <div className="sticky top-[100px] border-b border-white p-4 sm:border">
+      <div className="sticky top-[100px] border-b border-[#ae7aff] p-4 rounded-md  sm:border">
         <img
           className="mb-3 flex aspect-square h-16 w-16 rounded-full border-2 border-[#ae7aff] object-cover"
           referrerPolicy="no-referrer"
           src={userdata?.profilePicture || Dummyuser}
           alt={userdata?.firstname}
+          onError={(e) => {
+            e.target.src = Dummyuser;
+            e.target.onerror = null;
+          }}
         />
         <h2 className="mb-1 font-bold">{userdata?.firstname || "Username"} </h2>
         <p className="text-sm">

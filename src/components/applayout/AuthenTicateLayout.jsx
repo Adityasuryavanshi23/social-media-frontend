@@ -36,7 +36,7 @@ const AuthenTicateLayout = ({ children }) => {
             {children}
           </section>
           <aside className="hidden text-white lg:col-span-3 lg:block">
-            <div className="sticky top-[100px] border p-4">
+            <div className="sticky top-[100px] border border-[#ae7aff] p-4">
               <h2 className="mb-4 font-bold"># Trending Hashtags</h2>
               <ul className="list-disc pl-4">
                 <li>

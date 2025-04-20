@@ -2,8 +2,9 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const PostsNavHeader = () => {
-  const active = "inline-block bg-[#2c2c2c]  hover:bg-[#2c2c2c] px-6 py-1.5";
-  const inactive = "inline-block px-6 py-1.5 hover:bg-[#2c2c2c]";
+  const active =
+    "inline-block bg-[#2c2c2c]  rounded-md hover:bg-[#2c2c2c] hover:text-[#ae7aff]  px-6 py-1.5";
+  const inactive = "inline-block px-6 py-1.5 hover:bg-[#2c2c2c] hover:text-[#ae7aff] hover:rounded-md";
   const location = useLocation();
   return (
     <div className="sticky top-[82px] z-10 mt-[1px] bg-[#121212] pb-4 before:absolute before:inset-x-0 before:bottom-full before:h-[17px] before:bg-[#121212] md:top-[100px] md:mt-0">

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { likeDislikePostSuccess } from "../../store/slices/feedsReducer";
 import { likeDislikePostAction } from "../../store/action";
 import { PostCommments } from "../../pages/home/PostComments";
+import { useNavigate } from "react-router-dom";
 
 const Post = ({
   userimage,
@@ -20,11 +21,12 @@ const Post = ({
   const [showcomments, setShowcomments] = React.useState(false);
   const { userdata } = useSelector((state) => state.login);
   const dispatch = useDispatch();
+  const nav = useNavigate();
 
   const userId = userdata?._id;
   // Check if current user has liked the post
   const isLiked = useMemo(() => {
-    return userId === postuserId ? false : likes.includes(userId);
+    return userId === postuserId ? false : likes?.includes(userId);
   }, [likes, userId]);
   const handleLikeDislike = () => {
     // Optimistically update UI
@@ -45,17 +47,24 @@ const Post = ({
     );
   };
   return (
-    <div className="relative mb-2 w-full last:mb-0 sm:mb-4">
-      <div className="flex border-b border-t border-white p-4 text-white sm:border-l sm:border-r">
-        <div className="h-10 w-10 shrink-0 sm:h-12 sm:w-12">
+    <div className="relative mb-2 w-full last:mb-0 sm:mb-4 ">
+      <div className="flex border-b border-t border-[#ae7aff] p-4  text-white sm:border-l sm:border-r rounded-lg ">
+        <div></div>
+        <div className="h-10 w-10 shrink-0 sm:h-12 sm:w-12 ml-4">
           <img
+            onClick={() => nav(`/userprofile/${postuserId}`)}
             referrerPolicy="no-referrer"
             src={
               userimage ||
               "https://i.pinimg.com/474x/08/35/0c/08350cafa4fabb8a6a1be2d9f18f2d88.jpg"
             }
+            onError={(e) => {
+              e.target.src =
+                "https://i.pinimg.com/474x/08/35/0c/08350cafa4fabb8a6a1be2d9f18f2d88.jpg";
+              e.target.onerror = null;
+            }}
             alt={username || "Aqua Explorer"}
-            className="h-full w-full rounded-full object-cover"
+            className="h-full w-full rounded-full object-cover cursor-pointer"
           />
         </div>
         <div className="pl-4 pt-1">
@@ -87,7 +96,11 @@ const Post = ({
           <p className="mb-4 text-sm sm:text-base">{caption}</p>
           {postimage && (
             <div className="mb-4 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4">
-              <img src={postimage} alt="attachment-0" className="rounded-md" />
+              <img
+                src={postimage}
+                alt="attachment-0"
+                className="rounded-md h-[350px] max-w-[500px] "
+              />
             </div>
           )}
           <div className="flex gap-x-4">
