@@ -17,7 +17,8 @@ const MyPosts = () => {
     <>
       {userposts?.length === 0 ? (
         <h1 className="capitalize text-center my-10  ">
-          its seems like you does not have posts , create some post{" "} <br /><br />
+          its seems like you does not have posts , create some post <br />
+          <br />
           <span className="text-violet-400 border p-2  border-violet-600 rounded-md">
             <Link to={"/home/create"}>create here</Link>
           </span>
@@ -26,10 +27,13 @@ const MyPosts = () => {
         userposts?.map((post) => (
           <Post
             key={post._id}
-            username={userdata?.firstname + " " + userdata?.lastname}
+            username={userdata?.firstname + " " + (userdata?.lastname || "")}
             userimage={userdata?.profilePicture}
             caption={post.desc}
             postimage={post.image}
+            postuserId={post?.userId}
+            postId={post._id}
+            RefreshPosts={() => dispatch(getUserPostAction(userdata._id))}
           />
         ))
       )}

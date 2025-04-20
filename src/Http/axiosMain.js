@@ -21,8 +21,6 @@ export const makeApiRequest = async (url, method, body) => {
       },
       data: body,
     });
-    console.log(response);
-    // resolve(response.data);
     return response.data;
   } catch (error) {
     // reject(error);

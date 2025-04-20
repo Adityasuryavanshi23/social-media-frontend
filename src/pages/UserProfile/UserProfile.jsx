@@ -10,10 +10,8 @@ const UserProfile = () => {
   const nav = useNavigate();
   const { otheruserdata } = useSelector((state) => state.login);
   const { otheruserPosts } = useSelector((state) => state.login.otheruserdata);
-  console.log(otheruserPosts);
   useEffect(() => {
     if (id) {
-      console.log(otheruserdata, id);
       dispatch(getUsersDetailAction(id));
       dispatch(getotheruserPosts(id));
     }

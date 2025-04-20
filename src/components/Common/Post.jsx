@@ -6,6 +6,8 @@ import { likeDislikePostSuccess } from "../../store/slices/feedsReducer";
 import { likeDislikePostAction } from "../../store/action";
 import { PostCommments } from "../../pages/home/PostComments";
 import { useNavigate } from "react-router-dom";
+import { makeApiRequest } from "../../Http/axiosMain";
+import toast from "react-hot-toast";
 
 const Post = ({
   userimage,
@@ -17,6 +19,7 @@ const Post = ({
   comments,
   postuserId,
   createdAt,
+  RefreshPosts,
 }) => {
   const [showcomments, setShowcomments] = React.useState(false);
   const { userdata } = useSelector((state) => state.login);
@@ -45,6 +48,15 @@ const Post = ({
         postId,
       })
     );
+  };
+  const handleDeletePost = async () => {
+    try {
+      await makeApiRequest(`/post/${postId}`, "delete");
+      RefreshPosts();
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log(error);
+    }
   };
   return (
     <div className="relative mb-2 w-full last:mb-0 sm:mb-4 ">
@@ -75,6 +87,12 @@ const Post = ({
                 {moment(createdAt).fromNow()}
               </span>
             </div>
+            {userdata?._id === postuserId && (
+              <i
+                onClick={handleDeletePost}
+                className="fa-solid fa-trash cursor-pointer w-4 h-4 text-sm text-red-700"
+              ></i>
+            )}
             <button className="ml-auto shrink-0 hover:text-[#ae7aff]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -199,6 +217,7 @@ Post.propTypes = {
   caption: PropTypes.string,
   likes: PropTypes.number,
   comments: PropTypes.number,
+  RefreshPosts: PropTypes.func,
   createdAt: PropTypes.string,
   postId: PropTypes.string,
   postuserId: PropTypes.string,
