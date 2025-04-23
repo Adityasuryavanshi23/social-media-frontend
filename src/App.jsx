@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import Applayout from "./components/applayout/Applayout";
 import PostDetail from "./pages/postdetail/PostDetail";
@@ -14,8 +14,19 @@ import { CreatePost } from "./pages/home/CreatePost";
 import PostsUpdates from "./pages/home/PostsUpdates";
 import MyPosts from "./pages/home/MyPosts";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import { AnimatePresence } from "framer-motion";
 
-const Router = createBrowserRouter([
+export const App = () => {
+  const location = useLocation();
+  const element = useRoutes(routesconfig);
+
+  return (
+    <AnimatePresence mode="wait">
+      <div key={location.pathname}> {element}</div>
+    </AnimatePresence>
+  );
+};
+const routesconfig = [
   {
     path: "/",
     element: <Applayout />,
@@ -76,14 +87,4 @@ const Router = createBrowserRouter([
       },
     ],
   },
-]);
-
-export const App = () => {
-  return (
-    <div>
-      <RouterProvider router={Router} />
-    </div>
-  );
-};
-
-export default App;
+];
